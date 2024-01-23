@@ -1,4 +1,4 @@
-# SouthHeavenlyGate528
+# 香火License
 一款由小白大学生独立开发的横板卷轴动作剧情游戏
 
 ## 基本信息

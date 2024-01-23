@@ -10,8 +10,6 @@ public class Sign : MonoBehaviour
     private bool canPress;
     public Transform playerTrans;
 
-  
-
     private void Awake()
     {
         anim = signSprite.GetComponent<Animator>();

@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     public bool walljump;
     public bool IsSlide;
     public int SlideCost;
+    public bool isTalk;
     private void Start()
     {
         
@@ -88,8 +89,11 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerAttack(InputAction.CallbackContext context)
     {
-        playerAnimation.PlayerAttack();
-        isAttack= true;
+        if(!isTalk)
+        {
+            playerAnimation.PlayerAttack();
+            isAttack = true;
+        }
         //combo++;
         //if (combo >= 3)
         //    combo = 0;
@@ -111,7 +115,7 @@ public class PlayerController : MonoBehaviour
     {
         inputDirection = InputControl.Gameplay.Move.ReadValue<Vector2>();
 
-        if (!isHurt && !isAttack)
+        if (!isHurt && !isAttack && !isTalk)
             Move();
         CheckState();
     }

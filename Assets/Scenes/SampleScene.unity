@@ -1057,7 +1057,6 @@ GameObject:
   - component: {fileID: 608500301}
   - component: {fileID: 608500300}
   - component: {fileID: 608500299}
-  - component: {fileID: 608500298}
   - component: {fileID: 608500302}
   m_Layer: 0
   m_Name: NPC1_interact
@@ -1066,19 +1065,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &608500298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608500297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 201610ce63a82804b9499c0098ba957c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: {fileID: 1160353336}
 --- !u!61 &608500299
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1204,8 +1190,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c46e673cc821bc14d8e65bdeddfe2470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcImage: {fileID: 0}
-  npcName: {fileID: 0}
+  Button: {fileID: 1160353336}
+  isEntered: 0
+  lines:
+  - "-\u5154\u513F\u7237"
+  - wwwwwwwww.
+  - "-\u59D0\u59D0"
+  - lllllllllllll.
+  - lllllllllllll.
+  - "-\u5154\u513F\u7237"
+  - lllllllllllll.
+  - "-\u59D0\u59D0"
+  - lllllllllllll.
 --- !u!1 &750389010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,7 +1301,7 @@ GameObject:
   - component: {fileID: 752324957}
   m_Layer: 7
   m_Name: ///Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1472,6 +1468,7 @@ MonoBehaviour:
   walljump: 0
   IsSlide: 0
   SlideCost: 5
+  isTalk: 0
 --- !u!114 &752324954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6028,7 +6025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1646258245
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6664,6 +6661,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0708ac32ac9204c45a65dc15606d01b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sisterImage: {fileID: 21300000, guid: 153b8cd764f368c4580d036802b71590, type: 2}
+  pa_rabbitImage: {fileID: 21300000, guid: a388db6b30067ba439bdaefe5aa53ac1, type: 2}
+  brotherImage: {fileID: 21300000, guid: 7be161a99a4b5524fa059986c1c9ede8, type: 2}
+  currentImage: {fileID: 2123766424}
   dialogBox: {fileID: 1646258244}
   dialogText: {fileID: 855805978}
   nameText: {fileID: 750389011}
@@ -6674,6 +6675,7 @@ MonoBehaviour:
   - temp
   - dialog
   currentLine: 0
+  textSpeed: 0.06
 --- !u!4 &1991431335
 Transform:
   m_ObjectHideFlags: 0

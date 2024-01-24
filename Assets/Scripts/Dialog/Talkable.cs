@@ -12,6 +12,9 @@ public class Talkable : MonoBehaviour
     public string[] lines;
 
     public Questable questable; //可说话的对象有委派任务的能力
+
+    //[TextArea(1,4)]
+    //public string[] nextlines01;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))

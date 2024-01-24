@@ -70,11 +70,13 @@ public class DialogManager : MonoBehaviour
 
                         if(currentQuestable == null) //并不是所有NPC都有委派任务的能力
                         {
-                            return;
+                            //return;
+                            Debug.Log("没有任务");
                         }
                         else
                         {
-                            currentQuestable.DelegateQuest();
+                            currentQuestable.DelegateQuest(); //完成对话之后委派任务
+                            QuestManager.instance.UpdateQuestList(); //更新任务UI列表
                         }
                     }
                 }

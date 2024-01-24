@@ -7,6 +7,7 @@ public class DialogManager : MonoBehaviour
 {
     public static DialogManager instance; //单例模式，通过关键字static和其他语句只生成对象的一个实例，确保脚本在场景中的唯一性
 
+    [Header("对话者立绘")]
     public Sprite sisterImage;
     public Sprite pa_rabbitImage;
     public Sprite brotherImage;
@@ -17,10 +18,14 @@ public class DialogManager : MonoBehaviour
 
     [TextArea(1, 3)] //保证输入文字框不会显示成默认的一行
     public string[] dialogLines; //数组表示对话的内容
+
+    //写了[SerializeField]才可以将private变量在Inspector窗口中可见
     [SerializeField] private int currentLine; //实时追踪当前对话窗口正在进行数组中哪一行、哪一个元素的文字内容输入
     [SerializeField] private float textSpeed; //数字滚动速度
 
-    private bool isScrolling;
+    private bool isScrolling; //是否正在输出语句
+
+    public Questable currentQuestable; //当前正在说话的对象有什么任务
 
     private void Awake()
     {
@@ -62,6 +67,15 @@ public class DialogManager : MonoBehaviour
                     {
                         dialogBox.SetActive(false);
                         FindObjectOfType<PlayerController>().isTalk = false;
+
+                        if(currentQuestable == null) //并不是所有NPC都有委派任务的能力
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            currentQuestable.DelegateQuest();
+                        }
                     }
                 }
             }

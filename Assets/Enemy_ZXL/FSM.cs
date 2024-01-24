@@ -14,13 +14,12 @@ using UnityEngine.Rendering;
 public class FSM : MonoBehaviour
 {
     public Parameter parameter;
+
     private IState currentState;
 
     public InfoBarController barController;
 
     private Dictionary<StateType, IState> states = new Dictionary<StateType, IState>();
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -86,25 +85,6 @@ public class FSM : MonoBehaviour
         }
 
         barController.OnCharactorFlip();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log(collision.name + "Enter");
-        if (collision.CompareTag("Player"))
-        {
-            parameter.target = collision.transform;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        Debug.Log(collision.name + "Exit");
-
-        if (collision.CompareTag("Player"))
-        {
-            parameter.target = null;
-        }
     }
 
     private void OnDrawGizmos()

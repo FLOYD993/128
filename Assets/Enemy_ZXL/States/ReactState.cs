@@ -30,7 +30,7 @@ public class ReactState : IState
 
         // parameter.animator.Play("React");
         // trackEntry = parameter.skeletonAnimation.AnimationState.AddAnimation(0, parameter.react, true, -1F);
-        trackEntry = parameter.skeletonAnimation.AnimationState.AddAnimation(0, parameter.animationDic[StateType.React], true, 0F);
+        trackEntry = parameter.skeletonAnimation.AnimationState.AddAnimation(0, parameter.animationDic[StateType.React], false, -1F);
 
 
         /*-------------------- 2. ÇÐ»»µ½Chase --------------------*/

@@ -7,8 +7,12 @@ public class Attack : MonoBehaviour
     public int damage;
     public float attackRange;
     public float attackRate;
-    public void OnTriggerStay2D(Collider2D collider)
+
+    public void OnTriggerEnter2D(Collider2D collider)
     {
-        collider.GetComponent<Character>().TakeDamage(this);
+        Debug.Log(collider.name);
+
+        if(collider.gameObject.layer == 10)
+            collider.GetComponentInChildren<StateController>().GetHit(damage);
     }
 }

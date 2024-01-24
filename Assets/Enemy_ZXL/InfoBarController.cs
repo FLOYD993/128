@@ -33,7 +33,13 @@ public class InfoBarController : MonoBehaviour
 
     public void GetHit()
     {
-        Debug.Log(1.0F * parameter.currentHealth / parameter.maxHealth);
-        bloodBarAppearance.GetComponent<RectTransform>().localScale = new Vector3(1.0F * parameter.currentHealth / parameter.maxHealth, 1F, 1F);
+        float scale = 1.0F * parameter.currentHealth / parameter.maxHealth;
+
+        Debug.Log(scale);
+
+        if (scale > 0)
+            bloodBarAppearance.GetComponent<RectTransform>().localScale = new Vector3(scale, 1F, 1F);
+        else
+            bloodBarAppearance.GetComponent<RectTransform>().localScale = new Vector3(0F, 1F, 1F);
     }
 }

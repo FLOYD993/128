@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Character : MonoBehaviour
+public class Character : MonoBehaviour,ISaveable
 {
     [Header("»ù±¾ÊôÐÔ")]
     public float maxHealth;
@@ -22,6 +22,16 @@ public class Character : MonoBehaviour
 
     public UnityEvent<Transform> OnTakeDamege;
     public UnityEvent OnDie;
+    private void OnEnable()
+    {
+        ISaveable saveable=this;
+        saveable.RegisterSaveData();
+    }
+    private void OnDisable()
+    {
+        ISaveable saveable=this;
+        saveable.UnRegisterSaveData();
+    }
     private void Start()
     {
         currentHealth = maxHealth;
@@ -73,5 +83,31 @@ public class Character : MonoBehaviour
     {
         currentPower-=cost;
         OnHealthChange?.Invoke(this);
+    }
+
+    public DataDefination GetDataID()
+    {
+        return GetComponent<DataDefination>();
+    }
+
+    public void GetSaveDate(Data data)
+    {
+        if(data.characterPosDict.ContainsKey(GetDataID().ID))
+        {
+            data.characterPosDict[GetDataID().ID]=transform.position;
+        }
+        else
+        {
+            data.characterPosDict.Add(GetDataID().ID, transform.position);
+        }
+    }
+
+    public void LoadData(Data data)
+    {
+
+        if (data.characterPosDict.ContainsKey(GetDataID().ID))
+        {
+            transform.position = data.characterPosDict[GetDataID().ID];
+        }
     }
 }

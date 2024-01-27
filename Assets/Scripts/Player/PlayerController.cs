@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using Spine.Unity;
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -89,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerAttack(InputAction.CallbackContext context)
     {
-        if(!isTalk)
+        if(!isTalk&&!IsSlide)
         {
             playerAnimation.PlayerAttack();
             isAttack = true;
@@ -122,6 +123,7 @@ public class PlayerController : MonoBehaviour
     
     private void Move()
     {
+
         if(!walljump)
             rb.velocity = new Vector2(inputDirection.x * speed * Time.deltaTime, rb.velocity.y);
         int faceDir = (int)transform.localScale.x;

@@ -137,16 +137,19 @@ public class PlayerController : MonoBehaviour
     private void Jump(InputAction.CallbackContext context)
     {
         //Debug.Log("J");
-        if (physicsCheck.isGround)
+        if(!isTalk)
         {
-            rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-            IsSlide = false;
-            StopAllCoroutines();
-        }
-        else if (physicsCheck.IsWall)
-        {
-            rb.AddForce(new Vector2(-inputDirection.x, 2f) * walljumpforce, ForceMode2D.Impulse);
-            walljump = true;
+            if (physicsCheck.isGround)
+            {
+                rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+                IsSlide = false;
+                StopAllCoroutines();
+            }
+            else if (physicsCheck.IsWall)
+            {
+                rb.AddForce(new Vector2(-inputDirection.x, 2f) * walljumpforce, ForceMode2D.Impulse);
+                walljump = true;
+            }
         }
     }
 

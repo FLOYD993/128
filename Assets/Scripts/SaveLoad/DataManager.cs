@@ -21,11 +21,11 @@ public class DataManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        saveDataEvent.OnEventRaised += Save;
+        savaDataEvent.OnEventRaised += Save;
     }
     private void OnDisable()
     {
-        saveDataEvent.OnEventRaised -= Save;
+        savaDataEvent.OnEventRaised -= Save;
     }
     public void RegisterSaveData(ISaveable saveable)
     {

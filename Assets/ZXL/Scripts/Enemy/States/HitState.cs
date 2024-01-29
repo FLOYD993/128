@@ -29,7 +29,7 @@ public class HitState : IState
         // trackEntry = parameter.skeletonAnimation.AnimationState.AddAnimation(0, parameter.hit, true, -1F);
         trackEntry = parameter.skeletonAnimation.AnimationState.AddAnimation(0, parameter.animationDic[StateType.Hit], false, -1F);
 
-        parameter.currentHealth--;
+        parameter.currHealth--;
         manager.barController.GetHit();
 
 
@@ -51,7 +51,7 @@ public class HitState : IState
     {
         /*-------------------- 1. ÇÐ»»µ½Death --------------------*/
         // ÉúÃüÖµ <= 0
-        if (parameter.currentHealth <= 0)
+        if (parameter.currHealth <= 0)
         {
             manager.TransitionState(StateType.Death);
         }

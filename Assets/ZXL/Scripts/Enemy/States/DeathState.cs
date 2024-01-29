@@ -28,9 +28,8 @@ public class DeathState : IState
         // trackEntry = parameter.skeletonAnimation.AnimationState.SetAnimation(0, parameter.death, false);
         trackEntry = parameter.skeletonAnimation.AnimationState.AddAnimation(0, parameter.animationDic[StateType.Death], true, -1F);
 
-
         // TODO: 在一定时间后销毁物体
-        GameObject.Destroy(manager.gameObject, 1F);
+        GameObject.Destroy(manager.gameObject.transform.parent.gameObject, 1F);
     }
 
     public void OnUpdate()

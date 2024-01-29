@@ -56,7 +56,7 @@ public class PatrolState : IState
 
         /*-------------------- 2. ÇÐ»»µ½Idle --------------------*/
         // Ñ²Âßµ½ÀëÑ²Âßµã×ã¹»½ü£¨0.1F£©
-        manager.transform.position = Vector2.MoveTowards(manager.transform.position, parameter.patrolPoints[patrolPosition].position, parameter.moveSpeed * Time.deltaTime);
+        manager.transform.position = Vector2.MoveTowards(manager.transform.position, parameter.patrolPoints[patrolPosition].position, parameter.walkSpeed * Time.deltaTime);
 
         if(Vector2.Distance(manager.transform.position, parameter.patrolPoints[patrolPosition].position) < 0.1F)
         {

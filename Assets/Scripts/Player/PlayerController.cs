@@ -7,6 +7,10 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
+    private static PlayerController instance;
+
+    public PlayerParameter parameter;
+
     // Start is called before the first frame update
     public Rigidbody2D rb;
     private PhysicsCheck physicsCheck;
@@ -35,13 +39,13 @@ public class PlayerController : MonoBehaviour
     public bool walljump;
     public bool IsSlide;
     public int SlideCost;
-    private void Start()
-    {
-        
-    }
+
+    public static PlayerController Instance { get => instance; set => instance = value; }
+
     private void Awake()
     {
-      
+        instance = this;
+
         rb = GetComponent<Rigidbody2D>();
         physicsCheck = GetComponent<PhysicsCheck>();
         character = GetComponent<Character>();
@@ -49,22 +53,23 @@ public class PlayerController : MonoBehaviour
         InputControl.Gameplay.Jump.started += Jump;//+=注册
         InputControl.Gameplay.Attack.started += PlayerAttack;
         InputControl.Gameplay.Dash.started += Dash;
-        
+
         playerAnimation = GetComponent<PlayerAnimation>();
     }
 
     private void Dash(InputAction.CallbackContext context)
     {
 
-        if(!IsSlide&&(character.currentPower>character.cost)) {
+        if (!IsSlide && (character.currentPower > character.cost))
+        {
             IsSlide = true;
             var targetPos = new Vector3(transform.position.x + dashdis * transform.localScale.x, transform.position.y);
             gameObject.layer = LayerMask.NameToLayer("Enemy");
             StartCoroutine(TriggerDash(targetPos));
             GetComponent<Character>().OnDash(SlideCost);
         }
-        
-        
+
+
     }
     private IEnumerator TriggerDash(Vector3 target)
     {
@@ -74,12 +79,12 @@ public class PlayerController : MonoBehaviour
             yield return null;
             //if(!physicsCheck.isGround)
             //    break;
-            if(physicsCheck.touchLwall&&transform.localScale.x<0f||physicsCheck.touchRwall&& transform.localScale.x > 0f)
+            if (physicsCheck.touchLwall && transform.localScale.x < 0f || physicsCheck.touchRwall && transform.localScale.x > 0f)
             {
                 IsSlide = false;
                 break;
             }
-            rb.MovePosition(new Vector2(transform.position.x+transform.localScale.x*dashspeed,transform.position.y));
+            rb.MovePosition(new Vector2(transform.position.x + transform.localScale.x * dashspeed, transform.position.y));
         } while (Mathf.Abs(target.x - transform.position.x) > 0.1f);
         IsSlide = false;
         gameObject.layer = LayerMask.NameToLayer("Player");
@@ -89,7 +94,7 @@ public class PlayerController : MonoBehaviour
     private void PlayerAttack(InputAction.CallbackContext context)
     {
         playerAnimation.PlayerAttack();
-        isAttack= true;
+        isAttack = true;
         //combo++;
         //if (combo >= 3)
         //    combo = 0;
@@ -115,10 +120,10 @@ public class PlayerController : MonoBehaviour
             Move();
         CheckState();
     }
-    
+
     private void Move()
     {
-        if(!walljump)
+        if (!walljump)
             rb.velocity = new Vector2(inputDirection.x * speed * Time.deltaTime, rb.velocity.y);
         int faceDir = (int)transform.localScale.x;
         if (inputDirection.x > 0)
@@ -126,7 +131,7 @@ public class PlayerController : MonoBehaviour
         if (inputDirection.x < 0)
             faceDir = -1; //整数化 手柄遥感力度为小数
         transform.localScale = new Vector3(faceDir, 1, 1);//翻转人物
-       
+
     }
     private void Jump(InputAction.CallbackContext context)
     {
@@ -146,29 +151,29 @@ public class PlayerController : MonoBehaviour
 
     public void GetHurt(Transform attacker)
     {
-        isHurt=true;
+        isHurt = true;
         rb.velocity = Vector2.zero;
         Vector2 dir = new Vector2((transform.position.x - attacker.position.x), 0).normalized;
-        rb.AddForce(dir*hurtForce, ForceMode2D.Impulse);
+        rb.AddForce(dir * hurtForce, ForceMode2D.Impulse);
     }
     public void PlayerDead()
     {
-        isDead=true;
+        isDead = true;
         InputControl.Gameplay.Disable();
     }
     private void CheckState()
     {
-        if(physicsCheck.IsWall)
+        if (physicsCheck.IsWall)
         {
-            rb.velocity=new Vector2(rb.velocity.x, rb.velocity.y/2f);
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2f);
 
         }
         else
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
         }
-        if(walljump&&rb.velocity.y<0)
-            walljump=false;
+        if (walljump && rb.velocity.y < 0)
+            walljump = false;
         if (isDead || IsSlide)
             gameObject.layer = LayerMask.NameToLayer("Enemy");
         else

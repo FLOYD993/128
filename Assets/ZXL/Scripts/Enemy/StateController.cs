@@ -37,7 +37,7 @@ public class StateController : MonoBehaviour
 
     public void GetHit(int damage)
     {
-        parameter.currentHealth -= damage;
+        parameter.currHealth -= damage;
         parameter.isHit = true;
     }
 }

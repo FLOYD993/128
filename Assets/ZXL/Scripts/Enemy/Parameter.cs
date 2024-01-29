@@ -19,13 +19,15 @@ public struct AnimationType
     public string animationName;
 }
 
+
+
 [Serializable]
 public class Parameter
 {
     [Header("基础参数")]
     public int maxHealth;
-    public float moveSpeed;
-    public float chaseSpeed;
+    public float walkSpeed;
+    public float runSpeed;
     public float idleTime;
 
     [Header("活动范围")]
@@ -40,24 +42,21 @@ public class Parameter
     [Header("状态 & 动画")]
     public AnimationType[] animationTypes;
     public Dictionary<StateType, string> animationDic = new Dictionary<StateType, string>();
-    //public AnimationReferenceAsset idle;
-    //public AnimationReferenceAsset patrol;
-    //public AnimationReferenceAsset chase;
-    //public AnimationReferenceAsset react;
-    //public AnimationReferenceAsset attack;
-    //public AnimationReferenceAsset hit;
-    //public AnimationReferenceAsset death;
 
-    [Header("无需设置")]
+    [Header("状态 - 无需设置")]
+    public int currHealth;
+    public bool isHit;
+    public bool isDead;
+
+    [Header("其他 - 无需设置")]
+    public string enemyType;
     public Transform target;
     public SkeletonAnimation skeletonAnimation;
 
-    public bool isHit;
-    public int currentHealth;
-
-
     public void OnStart()
     {
-        currentHealth = maxHealth;
+        currHealth = maxHealth;
     }
+
+
 }

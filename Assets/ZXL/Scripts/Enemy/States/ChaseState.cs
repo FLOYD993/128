@@ -66,7 +66,7 @@ public class ChaseState : IState
         {
             manager.transform.position = Vector2.MoveTowards(manager.transform.position,
                                                                 parameter.target.position,
-                                                                parameter.chaseSpeed * Time.deltaTime);
+                                                                parameter.runSpeed * Time.deltaTime);
         }
     }
 

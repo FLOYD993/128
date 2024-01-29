@@ -14,7 +14,12 @@ public class InfoBarController : MonoBehaviour
         manager = GetComponentInParent<FSM>();
         parameter = manager.parameter;
 
-        bloodBarAppearance.GetComponent<RectTransform>().localScale = new Vector3 (1F, 1F, 1F);
+        Init();
+    }
+
+    public void Init()
+    {
+        bloodBarAppearance.GetComponent<RectTransform>().localScale = new Vector3(1F, 1F, 1F);
     }
 
     public void OnCharactorFlip()
@@ -33,7 +38,7 @@ public class InfoBarController : MonoBehaviour
 
     public void GetHit()
     {
-        float scale = 1.0F * parameter.currentHealth / parameter.maxHealth;
+        float scale = 1.0F * parameter.currHealth / parameter.maxHealth;
 
         Debug.Log(scale);
 

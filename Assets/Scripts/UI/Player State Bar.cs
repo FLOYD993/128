@@ -9,6 +9,7 @@ public class PlayerStateBar : MonoBehaviour
     public Image powerImage;
     private bool isRecovering;
     private Character currentCharacter;
+   
     private void Update()
     {
         if (healthDelayImage.fillAmount > healthImage.fillAmount)

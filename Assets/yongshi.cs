@@ -62,6 +62,15 @@ public partial class @Yongshi: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Choose"",
+                    ""type"": ""Button"",
+                    ""id"": ""0dc906af-b419-47b5-b9c7-54afd97c2439"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -238,6 +247,17 @@ public partial class @Yongshi: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcbda8a6-d102-4423-b52d-0b6e43eefd19"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Choose"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -829,6 +849,7 @@ public partial class @Yongshi: IInputActionCollection2, IDisposable
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
         m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
+        m_Gameplay_Choose = m_Gameplay.FindAction("Choose", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -906,6 +927,7 @@ public partial class @Yongshi: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Attack;
     private readonly InputAction m_Gameplay_Dash;
+    private readonly InputAction m_Gameplay_Choose;
     public struct GameplayActions
     {
         private @Yongshi m_Wrapper;
@@ -914,6 +936,7 @@ public partial class @Yongshi: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
         public InputAction @Dash => m_Wrapper.m_Gameplay_Dash;
+        public InputAction @Choose => m_Wrapper.m_Gameplay_Choose;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -935,6 +958,9 @@ public partial class @Yongshi: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @Choose.started += instance.OnChoose;
+            @Choose.performed += instance.OnChoose;
+            @Choose.canceled += instance.OnChoose;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -951,6 +977,9 @@ public partial class @Yongshi: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @Choose.started -= instance.OnChoose;
+            @Choose.performed -= instance.OnChoose;
+            @Choose.canceled -= instance.OnChoose;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -1137,6 +1166,7 @@ public partial class @Yongshi: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnChoose(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
     private void Dash(InputAction.CallbackContext context)
     {
 
-        if(!IsSlide&&(character.currentPower>character.cost)) {
+        if(!isTalk&&!IsSlide&&(character.currentPower>character.cost)) {
             IsSlide = true;
             var targetPos = new Vector3(transform.position.x + dashdis * transform.localScale.x, transform.position.y);
             gameObject.layer = LayerMask.NameToLayer("Enemy");

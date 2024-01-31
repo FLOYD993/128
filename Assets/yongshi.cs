@@ -253,7 +253,7 @@ public partial class @Yongshi: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""fcbda8a6-d102-4423-b52d-0b6e43eefd19"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""path"": ""<Keyboard>/j"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",

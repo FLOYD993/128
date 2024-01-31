@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
     }
     private void Awake()
     {
-      
         rb = GetComponent<Rigidbody2D>();
         physicsCheck = GetComponent<PhysicsCheck>();
         character = GetComponent<Character>();
@@ -110,20 +109,17 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-
     }
     private void FixedUpdate()
     {
         inputDirection = InputControl.Gameplay.Move.ReadValue<Vector2>();
-
-        if (!isHurt && !isAttack && !isTalk)
+        if (!isHurt && !isAttack &&!isTalk)
             Move();
         CheckState();
     }
     
     private void Move()
     {
-
         if(!walljump)
             rb.velocity = new Vector2(inputDirection.x * speed * Time.deltaTime, rb.velocity.y);
         int faceDir = (int)transform.localScale.x;
@@ -132,7 +128,6 @@ public class PlayerController : MonoBehaviour
         if (inputDirection.x < 0)
             faceDir = -1; //整数化 手柄遥感力度为小数
         transform.localScale = new Vector3(faceDir, 1, 1);//翻转人物
-       
     }
     private void Jump(InputAction.CallbackContext context)
     {
@@ -170,7 +165,6 @@ public class PlayerController : MonoBehaviour
         if(physicsCheck.IsWall)
         {
             rb.velocity=new Vector2(rb.velocity.x, rb.velocity.y/2f);
-
         }
         else
         {

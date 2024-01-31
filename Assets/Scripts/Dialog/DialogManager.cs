@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class DialogManager : MonoBehaviour
 {
     public static DialogManager instance; //单例模式，通过关键字static和其他语句只生成对象的一个实例，确保脚本在场景中的唯一性
-
     [Header("对话者立绘")]
     public Sprite sisterImage;
     public Sprite pa_rabbitImage;
@@ -24,6 +23,7 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private float textSpeed; //数字滚动速度
 
     private bool isScrolling; //是否正在输出语句
+    private bool isStop; //判断是否暂停
 
     public Questable currentQuestable; //当前正在说话的对象有什么任务
 
@@ -48,9 +48,12 @@ public class DialogManager : MonoBehaviour
     }
     private void Update()
     {
+        isStop = FindObjectOfType<GameController>().isStop;
         //对话更新
-        if(dialogBox.activeInHierarchy)
+        if(dialogBox.activeInHierarchy && !isStop)
         {
+            FindObjectOfType<PlayerController>().isTalk = true;
+            FindObjectOfType<PlayerController>().rb.velocity = new Vector2(0f, FindObjectOfType<PlayerController>().rb.velocity.y);
             if (Input.GetKeyDown(KeyCode.J) && dialogText.text == dialogLines[currentLine])
             {
                 if (!isScrolling) //只有文本全部输出完了才可以进行下一句
@@ -67,8 +70,7 @@ public class DialogManager : MonoBehaviour
                     {
                         dialogBox.SetActive(false);
                         FindObjectOfType<PlayerController>().isTalk = false;
-
-                        if(currentQuestable == null) //并不是所有NPC都有委派任务的能力
+                        if (currentQuestable == null) //并不是所有NPC都有委派任务的能力
                         {
                             //return;
                             Debug.Log("没有任务");
@@ -82,7 +84,7 @@ public class DialogManager : MonoBehaviour
                 }
             }
         }
-        
+
     }
     public void ShowDialog(string[] newLines)
     {

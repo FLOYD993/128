@@ -12,6 +12,9 @@ public class GameController : MonoBehaviour
     public Button[] buttons;
     private int selectedIndex = 0; // 当前选中的按钮索引
     public GameObject settingsWindow;
+
+    public bool isStop;
+    private float m_timer = 0; //函数使用计时器
     public void ExitGame() 
     {
         Debug.Log("我退出啦~~~~");
@@ -33,10 +36,12 @@ public class GameController : MonoBehaviour
             if (settingsWindow.activeSelf)
             {
                 ResumeGame();
+                isStop = false;
             }
             else
             {
                 PauseGame();
+                isStop=true;
                 buttons[0].Select();
             }
             settingsWindow.SetActive(!settingsWindow.activeSelf);
@@ -53,6 +58,7 @@ public class GameController : MonoBehaviour
         void ResumeGame()
         {
             Time.timeScale = 1f; // 恢复游戏
+            FindObjectOfType<PlayerController>().isAttack = false; //优化确定后会攻击一下
         }
         void HandleSettingsInput()
         {
@@ -92,6 +98,7 @@ public class GameController : MonoBehaviour
                 // 确认按钮1时的逻辑
                 settingsWindow.SetActive(false);
                 ResumeGame();
+                Invoke("SetStopState", 0.3f);
                 break;
             case 1:
                 // 确认按钮2时的逻辑
@@ -116,5 +123,9 @@ public class GameController : MonoBehaviour
     {
         // 处理确认选择的逻辑
         ConfirmSelection();
+    }
+    private void SetStopState()
+    {
+        isStop = false;
     }
 }

@@ -42,9 +42,18 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Confirm",
+                    "type": "Button",
+                    "id": "0ff6be39-5642-4c9d-92dd-23f9b0cfc97a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Choose",
                     "type": "Button",
-                    "id": "0dc906af-b419-47b5-b9c7-54afd97c2439",
+                    "id": "532454b3-7d98-4ccc-8cbf-3de5c972d572",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -219,6 +228,17 @@
                 },
                 {
                     "name": "",
+                    "id": "e5728654-9876-4d21-be89-fa9e21a478b9",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "7c697110-7521-4db1-b5fa-5bba018c2ded",
                     "path": "<Keyboard>/i",
                     "interactions": "",
@@ -230,11 +250,44 @@
                 },
                 {
                     "name": "",
-                    "id": "fcbda8a6-d102-4423-b52d-0b6e43eefd19",
-                    "path": "<Keyboard>/j",
+                    "id": "cc185cad-bb75-486c-a5af-7c5237f0cecc",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "91b9e36c-65cf-4e21-9a3d-28c54aa2cf87",
+                    "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1bb15036-3310-420b-9e9d-4ab221067bb0",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2d84266f-2cd4-4671-a42b-1df9d2e49b55",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Choose",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -608,6 +661,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad;Touch;Joystick;XR",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "740f11b3-97d5-414c-a984-72f344f31f78",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false

@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class Character : MonoBehaviour,ISaveable
 {
+    [Header("事件监听")]
+    public VoidEventSO newGameEvent;
+
     [Header("基本属性")]
     public float maxHealth;
     public float currentHealth;
@@ -12,6 +15,7 @@ public class Character : MonoBehaviour,ISaveable
     public float currentPower;
     public float powerRecoverSpeed;
     public float cost;
+
     [Header("受伤无敌")]
     public float invulnerableDuration;
     private float invulnerableCounter;
@@ -22,17 +26,24 @@ public class Character : MonoBehaviour,ISaveable
 
     public UnityEvent<Transform> OnTakeDamege;
     public UnityEvent OnDie;
+
     private void OnEnable()
     {
         ISaveable saveable=this;
-        saveable.RegisterSaveData();
+        // saveable.RegisterSaveData();
+
+        newGameEvent.OnEventRaised += NewGame;
     }
     private void OnDisable()
     {
         ISaveable saveable=this;
-        saveable.UnRegisterSaveData();
+        // saveable.UnRegisterSaveData();
+
+        newGameEvent.OnEventRaised -= NewGame;
     }
-    private void Start()
+
+
+    private void NewGame()
     {
         currentHealth = maxHealth;
         currentPower = maxPower;

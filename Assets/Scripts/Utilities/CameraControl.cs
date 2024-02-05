@@ -6,6 +6,9 @@ using System;
 
 public class CameraControl : MonoBehaviour
 {
+    [Header("事件监听")]
+    public VoidEventSO afterSceneLoadedEvent;
+
     private CinemachineConfiner2D confiner;
     public CinemachineImpulseSource impulseSource;
     public VoidEventSO cameraShakeEvent;
@@ -19,11 +22,15 @@ public class CameraControl : MonoBehaviour
     {
         confiner=GetComponent<CinemachineConfiner2D>();
     }
-    private void Start()
-    {
-        GetNewCameraBounds();
-        //lastPos = transform.position; //记录相机的初始位置
-    }
+
+    /* -------------------- 换到OnAfterSceneLoadedEvent()了 --------------------*/
+    //private void Start()
+    //{
+    //    GetNewCameraBounds();
+    //    //lastPos = transform.position; //记录相机的初始位置
+    //}
+    /* -------------------------------------------------------------------------*/
+
     //private void Update()
     //{
     //    //计算相机在上一帧和当前帧之间的移动距离
@@ -39,6 +46,13 @@ public class CameraControl : MonoBehaviour
     private void OnEnable()
     {
         cameraShakeEvent.OnEventRaised += OnCameraShakeEvent;
+        afterSceneLoadedEvent.OnEventRaised += OnAfterSceneLoadedEvent;
+    }
+
+    private void OnDisable()
+    {
+        cameraShakeEvent.OnEventRaised -= OnCameraShakeEvent;
+        afterSceneLoadedEvent.OnEventRaised -= OnAfterSceneLoadedEvent;
     }
 
     private void OnCameraShakeEvent()
@@ -46,10 +60,6 @@ public class CameraControl : MonoBehaviour
         impulseSource.GenerateImpulse();
     }
 
-    private void OnDisable()
-    {
-        cameraShakeEvent.OnEventRaised -= OnCameraShakeEvent;
-    }
     private void GetNewCameraBounds()
     {
         var obj = GameObject.FindGameObjectWithTag("Bounds");
@@ -57,5 +67,10 @@ public class CameraControl : MonoBehaviour
             return;
         confiner.m_BoundingShape2D=obj.GetComponent<Collider2D>();
         confiner.InvalidateCache();
+    }
+
+    private void OnAfterSceneLoadedEvent()
+    {
+        GetNewCameraBounds();
     }
 }

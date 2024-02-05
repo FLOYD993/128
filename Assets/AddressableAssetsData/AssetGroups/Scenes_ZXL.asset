@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Scenes_ZXL
+  m_EditorClassIdentifier: 
+  m_GroupName: Scenes_ZXL
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 608ab29f693846b4bab11cb26277c159
+  m_SerializeEntries:
+  - m_GUID: ba42b6188697a32468211420888c351c
+    m_Address: FirstPass
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 333d680d722f05344aa05e70278e04f0
+    m_Address: FirstPass_01Lake
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e44c97a38e6a8c4a93937f6e070964c
+    m_Address: FirstPass_02Marsh
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 44117b2aa98dbf044a18ea859d761ed7
+    m_Address: FirstPass_03Thorny
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ebb6fb211b4574741aa31cb901870a8a
+    m_Address: 0_Main
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 14d17c4244d807e42b3a5a9e313398d9, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 6ee8cc968f8738a49b075555c091f535, type: 2}
+    - {fileID: 11400000, guid: ac53c35e0e572bf4a8aefc470fee3fcb, type: 2}

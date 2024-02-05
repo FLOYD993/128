@@ -9,6 +9,9 @@ public class Attack : MonoBehaviour
     public float attackRate;
     public void OnTriggerStay2D(Collider2D collider)
     {
-        collider.GetComponent<Character>().TakeDamage(this);
+        if (collider.CompareTag("Player"))
+        {
+            collider.GetComponent<Character>().TakeDamage(this);
+        }
     }
 }

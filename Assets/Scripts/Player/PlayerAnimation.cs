@@ -30,7 +30,6 @@ public class PlayerAnimation : MonoBehaviour
         anim.SetBool("IsAttack",playerController.isAttack);
         anim.SetBool("IsWall", PhysicsCheck.IsWall);
         anim.SetBool("IsSlide", playerController.IsSlide);
-        //anim.SetBool("IsTalk", playerController.isTalk);
         //anim.SetInteger("combo", playerController.combo);
     }
     public void PlayHurt()

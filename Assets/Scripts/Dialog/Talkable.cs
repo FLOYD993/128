@@ -10,7 +10,6 @@ public class Talkable : MonoBehaviour
 
     [TextArea(1, 3)]
     public string[] lines;
-    public bool isStop; //判断游戏是否暂停
 
     public Questable questable; //可说话的对象有委派任务的能力
 
@@ -38,8 +37,7 @@ public class Talkable : MonoBehaviour
     }
     private void Update()
     {
-        isStop = FindObjectOfType<GameController>().isStop;
-        if(!isStop && isEntered && Input.GetKeyDown(KeyCode.E) && DialogManager.instance.dialogBox.activeInHierarchy == false)
+        if(isEntered && Input.GetKeyDown(KeyCode.E) && DialogManager.instance.dialogBox.activeInHierarchy == false)
         {
             Button.SetActive(false);
             DialogManager.instance.ShowDialog(lines);

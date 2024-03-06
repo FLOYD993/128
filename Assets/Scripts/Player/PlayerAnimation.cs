@@ -8,6 +8,10 @@ public class PlayerAnimation : MonoBehaviour
     private Rigidbody2D rb;
     private PhysicsCheck PhysicsCheck;
     private PlayerController playerController;
+
+    public GameObject myBag;
+    bool isOpen;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -18,6 +22,7 @@ public class PlayerAnimation : MonoBehaviour
     private void Update()
     {
         SetAnimation();
+        OpenMyBag();
     }
     public void SetAnimation()
     {
@@ -40,5 +45,14 @@ public class PlayerAnimation : MonoBehaviour
     public void PlayerAttack()
     {
         anim.SetTrigger("Attack");
+    }
+
+    void OpenMyBag()
+    {
+        if (Input.GetKeyDown(KeyCode.B))//B¼ü´ò¿ª±³°ü
+        {
+            isOpen = !isOpen;
+            myBag.SetActive(isOpen);
+        }
     }
 }

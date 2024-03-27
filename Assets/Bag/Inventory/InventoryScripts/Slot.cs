@@ -7,6 +7,7 @@ using TMPro;
 
 public class Slot : MonoBehaviour
 {
+    public int slotID;//ø’∏ÒID=ŒÔ∆∑ID
     public IteminBag slotItem;
     public Image slotImage;
     public TMP_Text slotNum;

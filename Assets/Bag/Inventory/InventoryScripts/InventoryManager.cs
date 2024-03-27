@@ -45,6 +45,7 @@ public class InventoryManager : MonoBehaviour
     */
     public static void RefreshItem()
     {
+        //循环删除slotGrid下的子集物体
         for (int i = 0; i < instance.slotGrid.transform.childCount; i++)
         {
             if (instance.slotGrid.transform.childCount == 0)
@@ -53,11 +54,13 @@ public class InventoryManager : MonoBehaviour
             instance.slots.Clear();
         }
 
+        //重新生成对应mybag里面的物品slot
         for (int i = 0; i < instance.myBag.itemList.Count; i++)
         {
             // CreateNewItem(instance.myBag.itemList[i]);
             instance.slots.Add(Instantiate(instance.emptySlot));
             instance.slots[i].transform.SetParent(instance.slotGrid.transform);
+            instance.slots[i].GetComponent<Slot>().slotID = i;
             instance.slots[i].GetComponent<Slot>().SetupSlot(instance.myBag.itemList[i]);
         }
     }

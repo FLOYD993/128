@@ -1969,7 +1969,6 @@ GameObject:
   - component: {fileID: 498878713}
   - component: {fileID: 498878715}
   - component: {fileID: 498878714}
-  - component: {fileID: 498878716}
   - component: {fileID: 498878717}
   m_Layer: 0
   m_Name: Bag
@@ -1977,7 +1976,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &498878713
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2041,23 +2040,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498878712}
   m_CullTransparentMesh: 1
---- !u!114 &498878716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 498878712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3e6fd30ebf22de418fd9e43acff3e6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myBag: {fileID: 11400000, guid: 458585e71eed02445868765d58251fc6, type: 2}
-  slotGrid: {fileID: 1237920040}
-  emptySlot: {fileID: 7938577941499854267, guid: 09e6414ce76b66b4c8ba8f571911cfb1, type: 3}
-  itemInformation: {fileID: 438574989}
-  slots: []
 --- !u!114 &498878717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2448,6 +2430,7 @@ GameObject:
   - component: {fileID: 570648960}
   - component: {fileID: 570648959}
   - component: {fileID: 570648958}
+  - component: {fileID: 570648961}
   m_Layer: 0
   m_Name: //Main Canvas
   m_TagString: Untagged
@@ -2543,6 +2526,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &570648961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570648956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e6fd30ebf22de418fd9e43acff3e6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBag: {fileID: 11400000, guid: 458585e71eed02445868765d58251fc6, type: 2}
+  slotGrid: {fileID: 1237920040}
+  emptySlot: {fileID: 7938577941499854267, guid: 09e6414ce76b66b4c8ba8f571911cfb1, type: 3}
+  itemInformation: {fileID: 438574989}
+  slots: []
 --- !u!1 &603074074
 GameObject:
   m_ObjectHideFlags: 0
